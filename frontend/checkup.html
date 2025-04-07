@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Checkup - HealthAssist</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="nav-item"><a href="checkup.html" class="active"><i class="fas fa-stethoscope"></i> Health Checkup</a></li>
+            <li class="nav-item"><a href="medicine.html"><i class="fas fa-pills"></i> Medicine</a></li>
+            <li class="nav-item"><a href="exercise.html"><i class="fas fa-running"></i> Exercise</a></li>
+            <li class="nav-item"><a href="doctor.html"><i class="fas fa-user-md"></i> Find Doctor</a></li>
+            <li class="nav-item"><a href="emergency.html"><i class="fas fa-ambulance"></i> Emergency</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="section-title">Health Checkup</h1>
+            <p class="text-center">Please fill in your health parameters for analysis</p>
+        </div>
+
+        <!-- Diabetes Check Section -->
+        <div class="card">
+            <div class="feature-card">
+                <i class="fas fa-droplet medical-icon"></i>
+                <h2>Diabetes Check</h2>
+                <form id="diabetesForm" class="checkup-form">
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Pregnancies</label>
+                            <input type="number" class="form-control" id="pregnancies" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Glucose Level</label>
+                            <input type="number" class="form-control" id="glucose" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Blood Pressure</label>
+                            <input type="number" class="form-control" id="bloodPressure" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Skin Thickness</label>
+                            <input type="number" class="form-control" id="skinThickness" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Insulin</label>
+                            <input type="number" class="form-control" id="insulin" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">BMI</label>
+                            <input type="number" class="form-control" id="bmi" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Diabetes Pedigree Function</label>
+                            <input type="number" class="form-control" id="dpf" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" id="age" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check Diabetes</button>
+                    <div id="diabetesResult" class="result-box"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Heart Disease Check Section -->
+        <div class="card">
+            <div class="feature-card">
+                <i class="fas fa-heart medical-icon"></i>
+                <h2>Heart Disease Check</h2>
+                <form id="heartForm" class="checkup-form">
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input type="number" class="form-control" id="heartAge" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Sex (1 = male, 0 = female)</label>
+                            <input type="number" class="form-control" id="sex" min="0" max="1" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Chest Pain Type (0-3)</label>
+                            <input type="number" class="form-control" id="cp" min="0" max="3" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Resting Blood Pressure</label>
+                            <input type="number" class="form-control" id="trestbps" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">Serum Cholesterol</label>
+                            <input type="number" class="form-control" id="chol" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fasting Blood Sugar > 120 (1 = true, 0 = false)</label>
+                            <input type="number" class="form-control" id="fbs" min="0" max="1" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check Heart Disease</button>
+                    <div id="heartResult" class="result-box"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Parkinson's Disease Check Section -->
+        <div class="card">
+            <div class="feature-card">
+                <i class="fas fa-brain medical-icon"></i>
+                <h2>Parkinson's Disease Check</h2>
+                <form id="parkinsonsForm" class="checkup-form">
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">MDVP:Fo(Hz)</label>
+                            <input type="number" class="form-control" id="fo" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">MDVP:Fhi(Hz)</label>
+                            <input type="number" class="form-control" id="fhi" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label class="form-label">MDVP:Flo(Hz)</label>
+                            <input type="number" class="form-control" id="flo" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">MDVP:Jitter(%)</label>
+                            <input type="number" class="form-control" id="Jitter_percent" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check Parkinson's</button>
+                    <div id="parkinsonsResult" class="result-box"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

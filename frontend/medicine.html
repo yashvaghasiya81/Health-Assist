@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Information - HealthAssist</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="nav-item"><a href="checkup.html"><i class="fas fa-stethoscope"></i> Health Checkup</a></li>
+            <li class="nav-item"><a href="medicine.html" class="active"><i class="fas fa-pills"></i> Medicine</a></li>
+            <li class="nav-item"><a href="exercise.html"><i class="fas fa-running"></i> Exercise</a></li>
+            <li class="nav-item"><a href="emergency.html"><i class="fas fa-ambulance"></i> Emergency</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="section-title">Medicine Information</h1>
+            <p class="text-center">Access detailed information about common medications and their uses</p>
+        </div>
+
+        <div class="grid-container">
+            <!-- Common Medications -->
+            <div class="feature-card">
+                <i class="fas fa-capsules medical-icon"></i>
+                <h2>Common Medications</h2>
+                <div class="form-group">
+                    <label class="form-label">Search Medicines</label>
+                    <input type="text" class="form-control" id="medicineSearch" placeholder="Type medicine name...">
+                </div>
+                <div id="medicineList" class="result-box">
+                    <div class="medicine-item">
+                        <h3>Aspirin</h3>
+                        <p><strong>Use:</strong> Pain relief, fever reduction, prevention of heart attacks</p>
+                        <p><strong>Dosage:</strong> 325-650mg every 4-6 hours</p>
+                        <p><strong>Side Effects:</strong> Stomach upset, bleeding risk</p>
+                    </div>
+                    <div class="medicine-item">
+                        <h3>Paracetamol</h3>
+                        <p><strong>Use:</strong> Pain relief and fever reduction</p>
+                        <p><strong>Dosage:</strong> 500-1000mg every 4-6 hours</p>
+                        <p><strong>Side Effects:</strong> Rare when taken as directed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medicine Categories -->
+            <div class="feature-card">
+                <i class="fas fa-list medical-icon"></i>
+                <h2>Medicine Categories</h2>
+                <ul class="category-list">
+                    <li>
+                        <i class="fas fa-heart"></i>
+                        <span>Cardiovascular Medicines</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-lungs"></i>
+                        <span>Respiratory Medicines</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-brain"></i>
+                        <span>Neurological Medicines</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-virus"></i>
+                        <span>Antibiotics</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Medicine Safety -->
+        <div class="card">
+            <h2>Medicine Safety Guidelines</h2>
+            <div class="grid-container">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt medical-icon"></i>
+                    <h3>Storage</h3>
+                    <ul>
+                        <li>Keep medicines in a cool, dry place</li>
+                        <li>Store away from direct sunlight</li>
+                        <li>Keep out of reach of children</li>
+                        <li>Check expiration dates regularly</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-exclamation-triangle medical-icon"></i>
+                    <h3>Precautions</h3>
+                    <ul>
+                        <li>Follow prescribed dosage strictly</li>
+                        <li>Don't share medications</li>
+                        <li>Inform doctor about allergies</li>
+                        <li>Report side effects promptly</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-clock medical-icon"></i>
+                    <h3>Timing</h3>
+                    <ul>
+                        <li>Take medicines at prescribed times</li>
+                        <li>Complete full course of antibiotics</li>
+                        <li>Don't skip doses</li>
+                        <li>Set reminders if needed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Medicine search functionality
+        document.getElementById('medicineSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const medicineItems = document.querySelectorAll('.medicine-item');
+            
+            medicineItems.forEach(item => {
+                const medicineName = item.querySelector('h3').textContent.toLowerCase();
+                if (medicineName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

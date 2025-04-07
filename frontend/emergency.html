@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services - HealthAssist</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="nav-item"><a href="checkup.html"><i class="fas fa-stethoscope"></i> Health Checkup</a></li>
+            <li class="nav-item"><a href="medicine.html"><i class="fas fa-pills"></i> Medicine</a></li>
+            <li class="nav-item"><a href="exercise.html"><i class="fas fa-running"></i> Exercise</a></li>
+            <li class="nav-item"><a href="doctor.html"><i class="fas fa-user-md"></i> Find Doctor</a></li>
+            <li class="nav-item"><a href="emergency.html" class="active"><i class="fas fa-ambulance"></i> Emergency</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card emergency-card">
+            <h1 class="section-title">Emergency Services</h1>
+            <p class="text-center">Quick access to emergency medical services and nearby facilities</p>
+        </div>
+
+        <div class="grid-container">
+            <!-- Emergency Contacts -->
+            <div class="feature-card emergency-card">
+                <i class="fas fa-phone medical-icon"></i>
+                <h2>Emergency Numbers</h2>
+                <div class="emergency-contacts">
+                    <p><strong>Ambulance:</strong> 108</p>
+                    <p><strong>Police:</strong> 100</p>
+                    <p><strong>Fire:</strong> 101</p>
+                    <p><strong>National Emergency:</strong> 112</p>
+                </div>
+            </div>
+
+            <!-- Find Nearby Hospitals -->
+            <div class="feature-card">
+                <i class="fas fa-hospital medical-icon"></i>
+                <h2>Find Nearby Hospitals</h2>
+                <div class="form-group">
+                    <label class="form-label">Select City</label>
+                    <select id="citySelect" class="form-control">
+                        <option value="">Select City</option>
+                        <option value="surat">Surat</option>
+                        <option value="ahmedabad">Ahmedabad</option>
+                        <option value="vadodara">Vadodara</option>
+                        <option value="rajkot">Rajkot</option>
+                    </select>
+                </div>
+                <button onclick="findHospitals()" class="btn btn-primary">Find Hospitals</button>
+                <div id="hospitalList" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Emergency Guidelines -->
+        <div class="card">
+            <h2>Emergency Guidelines</h2>
+            <div class="grid-container">
+                <div class="feature-card">
+                    <i class="fas fa-heartbeat medical-icon"></i>
+                    <h3>Heart Attack</h3>
+                    <ul>
+                        <li>Call emergency services immediately</li>
+                        <li>Chew and swallow aspirin if available</li>
+                        <li>Rest in a comfortable position</li>
+                        <li>Loosen tight clothing</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-bone medical-icon"></i>
+                    <h3>Fractures</h3>
+                    <ul>
+                        <li>Don't move the injured area</li>
+                        <li>Apply ice to reduce swelling</li>
+                        <li>Immobilize the injured area</li>
+                        <li>Seek immediate medical attention</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-head-side-cough medical-icon"></i>
+                    <h3>Breathing Difficulty</h3>
+                    <ul>
+                        <li>Stay calm and sit upright</li>
+                        <li>Open windows for fresh air</li>
+                        <li>Use prescribed inhaler if available</li>
+                        <li>Call emergency if severe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hospitals = {
+            surat: [
+                { name: "SMIMER Hospital", address: "Umarwada, Surat", phone: "0261-2368040" },
+                { name: "New Civil Hospital", address: "Majuragate, Surat", phone: "0261-2244456" }
+            ],
+            ahmedabad: [
+                { name: "Civil Hospital", address: "Asarwa, Ahmedabad", phone: "079-22683721" },
+                { name: "VS Hospital", address: "Ellis Bridge, Ahmedabad", phone: "079-26576311" }
+            ],
+            vadodara: [
+                { name: "SSG Hospital", address: "Raopura, Vadodara", phone: "0265-2423344" },
+                { name: "GMERS Hospital", address: "Gotri, Vadodara", phone: "0265-2388262" }
+            ],
+            rajkot: [
+                { name: "Civil Hospital", address: "Jamnagar Road, Rajkot", phone: "0281-2445444" },
+                { name: "PDU Hospital", address: "Hospital Chowk, Rajkot", phone: "0281-2458337" }
+            ]
+        };
+
+        function findHospitals() {
+            const city = document.getElementById("citySelect").value;
+            const hospitalListDiv = document.getElementById("hospitalList");
+            
+            hospitalListDiv.innerHTML = "";
+            if (city && hospitals[city]) {
+                hospitals[city].forEach(hospital => {
+                    hospitalListDiv.innerHTML += `
+                        <div class="hospital-item">
+                            <h4>${hospital.name}</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> ${hospital.address}</p>
+                            <p><i class="fas fa-phone"></i> ${hospital.phone}</p>
+                            <a href="https://www.google.com/maps/search/${encodeURIComponent(hospital.name + ' ' + hospital.address)}" 
+                               target="_blank" class="btn btn-secondary">
+                                <i class="fas fa-map"></i> View on Map
+                            </a>
+                        </div>
+                    `;
+                });
+            } else {
+                hospitalListDiv.innerHTML = "<p>Please select a city to view hospitals.</p>";
+            }
+        }
+    </script>
+</body>
+
+</html>
